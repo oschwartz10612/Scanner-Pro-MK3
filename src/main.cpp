@@ -1,7 +1,6 @@
 #include <includes.h>
 
-#include <scripts/pxiID.h> //User Scripts
-
+#include <scripts/distribution.h> //User Scripts
 
 String msg;
 char flag_esc = 0;
@@ -71,9 +70,5 @@ void loop() {
     }  
   }
 }
-
-  2390N0098055555   2390N0098055555   2390N0098055555   2390N0098055555   2390N0098055555 dfdffdg     onFinished
-  fsgffdffdf      onFinished
-  fffffffffff     onFinished
   
 
