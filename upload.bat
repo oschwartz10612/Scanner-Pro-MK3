@@ -1,1 +1,0 @@
-pio run -t upload
