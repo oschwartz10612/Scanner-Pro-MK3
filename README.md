@@ -4,7 +4,7 @@ Takes USB input from a barcode scanner and sends the message to the computer wit
 ### Current Build
 [![Build Status](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3.svg?branch=master)](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3)
 
-## Instillation
+## Installation
 Download and unzip the latest upload application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
 
 ## Usage
