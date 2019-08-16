@@ -62,4 +62,5 @@ pio run
 pio run -t upload
 ```
 
+9. If you would like to add your script to the uploader, create a new pull request with your new script in the script folder and it will be added for future users.
 
