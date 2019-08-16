@@ -1,4 +1,4 @@
-# Scanner Macro Pro V2
+# Scanner Pro MK3
 Takes USB input from a barcode scanner and sends the message to the computer with customizable macros.
 
 ### Current Build
