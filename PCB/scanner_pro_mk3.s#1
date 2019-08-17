@@ -10761,6 +10761,7 @@ Example Datasheet</description>
 <sheet>
 <plain>
 <text x="-10.16" y="-7.62" size="1.778" layer="91">ISP Programming for Atmega32u4</text>
+<text x="38.1" y="104.14" size="1.778" layer="91">Serial Programing for PIC USB Controller</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="5.08" y="58.42" smashed="yes">

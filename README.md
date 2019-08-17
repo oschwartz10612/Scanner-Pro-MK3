@@ -1,5 +1,7 @@
 # Scanner Pro MK3
-Takes USB input from a barcode scanner and sends the message to the computer with customizable macros.
+Takes USB input from a USB Keyboard HID device and sends the message to the computer with customizable macros.
+
+Works with barcode scanners and USB Keyboards.
 
 ### Current Build
 [![Build Status](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3.svg?branch=master)](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3)
@@ -30,7 +32,7 @@ Download and install the latest upload application from [releases.](https://gith
 git clone https://github.com/oschwartz10612/Scanner-Pro-MK3.git
 ```
 
-4. Create a new file in the scripts directory with the .h extension and a creative name. Populate the file with the following boilerplate:
+4. Create a new file in the src/scripts directory with the .h extension and a creative name. Populate the file with the following boilerplate:
 ```c++
 #include <includes.h>
 
@@ -45,9 +47,9 @@ bool script(String msg) {
 
 5. Write your script in place of the comment. You can access the data from the scanner in the msg variable. Refer to Arduino's [Keyboard](https://www.arduino.cc/reference/en/language/functions/usb/keyboard/) library documentation for reference about writing to the computer as a HID device.
 
-6. In main.cpp, change the following line to match your script file:
+6. In src/main.cpp, change the following line to match your script file:
 ```c++
-#include <scripts/rackLocationLOANER.h> //User Scripts
+#include <scripts/yourScriptHere.h> //User Scripts
 ```
 
 7. Compile your code to ensure that there are no errors using the following command:
