@@ -5,22 +5,20 @@ Takes USB input from a barcode scanner and sends the message to the computer wit
 [![Build Status](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3.svg?branch=master)](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3)
 
 ## Installation
-Download and unzip the latest upload application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
+Download and install the latest upload application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
 
 ## Usage
-1. Plug in the Scanner Pro to a USB port on a computer
+1. Plug in the Scanner Pro to a USB port on a computer.
 
-2. In Windows device manager under "Ports" make note of the Arduino device COM port. For example: COM8
+2. In Windows device manager under "Ports" make note of the Arduino device COM port. For example: COM8.
 
-3. Run upload.bat
+3. Run the "Scanner Pro Upload" application.
 
-4. Enter the COM port
+4. Enter the COM port.
 
-5. Pick a script to download by entering the corresponding number
+5. Pick a script to download by entering the corresponding number.
 
 6. Allow the script to download to the board. You should hear the Windows chime confirming that the board has disconnected then reconnected.
-
-7. When the script has finished press any key to continue.
 
 ## How to make a custom script?
 1. Download and install Python.
