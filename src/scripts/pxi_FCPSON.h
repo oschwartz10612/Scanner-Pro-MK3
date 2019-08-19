@@ -6,6 +6,8 @@ bool script(String msg) {
     if (msg != "") {
         Keyboard.write(9); //TAB
         delay(delayTime);
+        Keyboard.write(9); //TAB
+        delay(delayTime);
         Keyboard.print("2390N");
         delay(delayTime);
         Keyboard.print(msg);
