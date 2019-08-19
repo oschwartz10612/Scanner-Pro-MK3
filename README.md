@@ -7,7 +7,7 @@ Works with barcode scanners and USB Keyboards.
 [![Build Status](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3.svg?branch=master)](https://travis-ci.com/oschwartz10612/Scanner-Pro-MK3)
 
 ## Installation
-Download and install the latest upload application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
+Download the latest upload application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
 
 ## Usage
 1. Plug in the Scanner Pro to a USB port on a computer.
