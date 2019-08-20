@@ -19,6 +19,8 @@ bool script(String msg) {
             delay(delayTime);
             Keyboard.write(9); //TAB
             delay(delayTime);
+            Keyboard.write(9); //TAB
+            delay(delayTime);
             Keyboard.print("2390D");
             delay(delayTime);
             Keyboard.print(msg);
