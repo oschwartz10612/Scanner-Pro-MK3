@@ -4,12 +4,15 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "electron-rebuild -f -w serialport"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^6.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "serialport": "^7.1.5"
+  }
 }

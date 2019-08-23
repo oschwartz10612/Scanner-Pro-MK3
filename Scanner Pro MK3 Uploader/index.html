@@ -3,10 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <title>Scanner Pro Upload</title>
+    <style>
+        .button {
+          margin-top: 10px;
+        }
+        .output {
+          margin-top: 10px;
+          background-color: black;
+          color: white;
+          width: 70%;
+          height: 300px;
+          overflow: scroll;
+        }
+    </style>
   </head>
   <body>
-      <button id="test">Test</button>
-      <div id="stdout"></div>
+      <input type="text" id="comPort">
+      <button id="comButton" class="button">Save COM Port</button> <br>
+      <button id="file" class="button">Select File</button> <br>
+      <button id="run" class="button">Run</button>
+
+      <div id="stdout" class="output"></div>
   </body>
 </html>
 

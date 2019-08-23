@@ -4,12 +4,14 @@ const os = require('os');
 var spawn = require('child_process').spawn
 
 let win
+let file
+let comPort   
 
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 500,
     webPreferences: {
       nodeIntegration: true
     }
@@ -48,7 +50,7 @@ ipc.on('open-file-dialog-for-file', function (event) {
          properties: ['openFile']
      }, function (files) {
         if (files) {
-          runAvrdude('COM8', files[0], event);
+          file = files[0]
         }
      });
  } else {
@@ -56,32 +58,32 @@ ipc.on('open-file-dialog-for-file', function (event) {
          properties: ['openFile', 'openDirectory']
      }, function (files) {
          if (files) {
-            runAvrdude('COM8', files[0], event);
+          file = files[0]
          }
      });
  }});
 
-function runAvrdude(port, file, event) {
+ ipc.on('comPort', function (event, data) {
+   comPort = data
+ })
+
+ ipc.on('run', function (event, data) {
+  runAvrdude(comPort, file)
+ })
+
+function runAvrdude(port, file) {
   avrdude = spawn('./avrdude/32u4Upload.exe', [port, file]);
 
   avrdude.stdout.on('data', function (data) {
-    event.sender.send('avrdude', data.toString());
+    win.webContents.send('avrdude', data.toString());
   });
 
   avrdude.stderr.on('data', function (data) {
-    event.sender.send('avrdude', data.toString());
+    win.webContents.send('avrdude', data.toString());
   });
 
   avrdude.on('exit', function (code) {
-    event.sender.send('avrdude', code.toString());
+    win.webContents.send('avrdude', code.toString());
   });
 }
 
-var serialport = require("serialport");
-serialport.list(function (err, ports) {
-    ports.forEach(function(port) {
-      console.log(port.comName);
-      console.log(port.pnpId);
-      console.log(port.manufacturer);
-    });
-});
