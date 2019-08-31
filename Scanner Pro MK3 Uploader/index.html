@@ -9,6 +9,8 @@
         }
         .output {
           margin-top: 10px;
+          padding: 10px 10px 10px 10px;
+          font-family: 'Courier New', Courier, monospace;
           background-color: black;
           color: white;
           width: 70%;
@@ -18,11 +20,15 @@
     </style>
   </head>
   <body>
-      <input type="text" id="comPort">
-      <button id="comButton" class="button">Save COM Port</button> <br>
-      <button id="file" class="button">Select File</button> <br>
-      <button id="run" class="button">Run</button>
+      <select name="COM" id="comPort" onchange="selectCom(this.value)"></select> 
+      <button id="update">Update</button><br>
+      <button id="file" class="button">Select File</button>
+      <button id="run" class="button">Run</button> <br>
 
+      <button class="button" id="connect">Connect</button>
+      <button class="button" id="close">Close</button>
+      <input type="text" id="serial" class="button">
+      <button class="button" id="send">Send</button>
       <div id="stdout" class="output"></div>
   </body>
 </html>
