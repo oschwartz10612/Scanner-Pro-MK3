@@ -1,0 +1,26 @@
+.button {
+    margin-top: 10px;
+}
+.output {
+    margin-top: 5px;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+}
+.COM {
+    float: right;
+}
+.upload {
+    width: 400px;
+}
+#connect {
+    margin-left: 10px;
+}
+#close {
+    margin-left: 10px;
+}

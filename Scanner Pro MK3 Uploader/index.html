@@ -3,33 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <title>Scanner Pro Upload</title>
-    <style>
-        .button {
-          margin-top: 10px;
-        }
-        .output {
-          margin-top: 10px;
-          padding: 10px 10px 10px 10px;
-          font-family: 'Courier New', Courier, monospace;
-          background-color: black;
-          color: white;
-          width: 70%;
-          height: 300px;
-          overflow: scroll;
-        }
-    </style>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-      <select name="COM" id="comPort" onchange="selectCom(this.value)"></select> 
-      <button id="update">Update</button><br>
-      <button id="file" class="button">Select File</button>
-      <button id="run" class="button">Run</button> <br>
 
-      <button class="button" id="connect">Connect</button>
-      <button class="button" id="close">Close</button>
-      <input type="text" id="serial" class="button">
-      <button class="button" id="send">Send</button>
-      <div id="stdout" class="output"></div>
+    <div class="container-fluid">
+
+      <div class="COM">
+        <h5>Serial Port:</h5>
+        <div class="input-group">
+            <select name="COM" id="comPort" onchange="selectCom(this.value)"></select> 
+            <button id="update" class="btn btn-outline-secondary">Update</button>
+        </div>
+      </div>
+  
+        <div class="upload">
+          <h5>Upload:</h5>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button" id="file">Select file</button>
+            </div>
+            <input type="text" id="fileDisplay" disabled class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button id="run" class="btn btn-success">Run</button>
+          </div>
+        </div>
+        
+        <hr>
+
+        <div class="serial">
+          <h5>Send Commands: </h5>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button" id="send">Send</button>
+            </div>
+            <input type="text" id="serial" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button class="btn btn-warning" id="connect">Connect</button>
+            <button class="btn btn-danger" id="close">Close</button>
+          </div>     
+        </div>
+        <div id="stdout" class="output"></div>
+    </div>
+
+
   </body>
 </html>
 

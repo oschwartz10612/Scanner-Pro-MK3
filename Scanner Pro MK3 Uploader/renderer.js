@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', pageLoaded);
 
 var com;
 var port;
+var connected
 
 const fileButton = document.getElementById('file')
 fileButton.addEventListener('click', () => {
@@ -18,8 +19,22 @@ run.addEventListener('click', () => {
 
 var stdoutDiv = document.getElementById('stdout')
 ipc.on('avrdude', function (event, output) {
-    stdoutDiv.innerHTML += output + '<br>'
+    if (output == '#' || output == '##') {
+        stdoutDiv.innerHTML += output
+    }
+    else {
+        stdoutDiv.innerHTML += output + '<br>'
+    }
+    
     stdoutDiv.scrollTop = stdoutDiv.scrollHeight;
+});
+
+var fileDisplay = document.getElementById('fileDisplay')
+ipc.on('fileDisplay', function (event, output) {
+    if (output != null) {
+        run.disabled = false;
+    }
+    fileDisplay.value = output
 });
 
 const serialData = document.getElementById('serial')
@@ -42,10 +57,12 @@ connect.addEventListener('click', () => {
 
     port.on('data', function (data) {
         stdoutDiv.innerHTML += data + "<br>"
+        stdoutDiv.scrollTop = stdoutDiv.scrollHeight;
     })
 
     port.on('error', function(err) {
         stdoutDiv.innerHTML += err + "<br>"
+        stdoutDiv.scrollTop = stdoutDiv.scrollHeight;
     })
 
     port.on('open', function(err) {
@@ -55,6 +72,7 @@ connect.addEventListener('click', () => {
 
         connect.disabled = true;
         close.disabled = false;
+        stdoutDiv.scrollTop = stdoutDiv.scrollHeight;
     })
 
     port.on('close', function(err) {
@@ -64,6 +82,7 @@ connect.addEventListener('click', () => {
 
         connect.disabled = false;
         close.disabled = true;
+        stdoutDiv.scrollTop = stdoutDiv.scrollHeight;
     })
 
 })
@@ -78,6 +97,11 @@ const update = document.getElementById('update')
 update.addEventListener('click', () => {
     option.length = 0;
     serialport.list(function (err, ports) {
+        if (ports.length == 0) {
+            option.text = 'No devices';
+            comPort.add(option);
+            selectCom("No-Devices");
+        }
         ports.forEach(function(port) {
             var text = port.comName + " - " + port.manufacturer;
             option.text = text;
@@ -92,8 +116,14 @@ function pageLoaded() {
     serialData.disabled = true;
     send.disabled = true;
     close.disabled = true;
+    run.disabled = true;
 
     serialport.list(function (err, ports) {
+        if (ports.length == 0) {
+            option.text = 'No devices';
+            comPort.add(option);
+            selectCom("No-Devices");
+        }
         ports.forEach(function(port) {
             var text = port.comName + " - " + port.manufacturer;
             option.text = text;
@@ -104,7 +134,14 @@ function pageLoaded() {
  }
 
  function selectCom(port) {
-     var comParse = port.split(" -");
-     ipc.send('comPort', comParse[0])
-     com = comParse[0];
+     if (port == 'No-Devices') {
+         fileButton.disabled = true;
+         connect.disabled = true;
+     } else {
+        fileButton.disabled = false;
+        connect.disabled = false;
+        var comParse = port.split(" -");
+        ipc.send('comPort', comParse[0])
+        com = comParse[0];
+     }
  }

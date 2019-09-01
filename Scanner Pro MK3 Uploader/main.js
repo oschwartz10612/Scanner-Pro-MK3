@@ -11,17 +11,17 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 1000,
-    height: 1000,
+    height: 600,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
+  //win.removeMenu()
+
   // and load the index.html of the app.
   win.loadFile('index.html')
-
-  // Open the DevTools.
-  win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -51,6 +51,7 @@ ipc.on('open-file-dialog-for-file', function (event) {
      }, function (files) {
         if (files) {
           file = files[0]
+          win.webContents.send('fileDisplay', file);
         }
      });
  } else {
@@ -59,6 +60,7 @@ ipc.on('open-file-dialog-for-file', function (event) {
      }, function (files) {
          if (files) {
           file = files[0]
+          win.webContents.send('fileDisplay', file);
          }
      });
  }});
@@ -69,6 +71,7 @@ ipc.on('open-file-dialog-for-file', function (event) {
 
 var serialport = require("serialport");
 ipc.on('run', function (event, data) {
+
   serialport.list(function (err, ports) {
     ports.forEach(function(port) {
       if (port.comName == comPort) {
@@ -95,9 +98,7 @@ function resetPort(ID) {
 
     setTimeout(() => {
       serialport.list(function (err, ports) {
-        ports.forEach(function(port) {
-          console.log(port.serialNumber);
-          
+        ports.forEach(function(port) {          
           if (port.serialNumber == ID) {
             win.webContents.send('avrdude', 'New port is: ' + port.comName);
 
@@ -115,17 +116,20 @@ function resetPort(ID) {
 }
 
 function avrdude(port, file) { 
-  avrdude = spawn('./avrdude/avrdude.exe', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
+  if (process.platform === "win32") {
+    avrdude = spawn('./avrdude/avrdude.exe', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
+  } else {
+    avrdude = spawn('avrdude', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
+  }
+  avrdude.stdout.on('data', function (data) {
+    win.webContents.send('avrdude', data.toString());
+  });
 
-      avrdude.stdout.on('data', function (data) {
-        win.webContents.send('avrdude', data.toString());
-      });
-    
-      avrdude.stderr.on('data', function (data) {
-        win.webContents.send('avrdude', data.toString());
-      });
-    
-      avrdude.on('exit', function (code) {
-        win.webContents.send('avrdude', code.toString());
-      });
+  avrdude.stderr.on('data', function (data) {
+    win.webContents.send('avrdude', data.toString());
+  });
+
+  avrdude.on('exit', function (code) {
+    win.webContents.send('avrdude', 'Process exited with code: ' + code.toString() + '<br><br>');
+  });
 }
