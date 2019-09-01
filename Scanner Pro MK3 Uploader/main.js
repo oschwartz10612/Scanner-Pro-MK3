@@ -11,14 +11,14 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 1000,
-    height: 600,
+    height: 550,
     resizable: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
-  //win.removeMenu()
+  win.removeMenu()
 
   // and load the index.html of the app.
   win.loadFile('index.html')

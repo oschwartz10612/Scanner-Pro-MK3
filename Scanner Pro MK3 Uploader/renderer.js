@@ -40,14 +40,25 @@ ipc.on('fileDisplay', function (event, output) {
 const serialData = document.getElementById('serial')
 const send = document.getElementById('send')
 send.addEventListener('click', () => {
-    var data = serialData.value
-    
+    sendCommand();
+})
+serialData.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        sendCommand();
+    }
+});
+
+function sendCommand() {
+    var data = serialData.value + "<>"
+    console.log(data);
+
+
     port.write(data, function(err) {
         if (err) {
             return stdoutDiv.innerHTML += 'Error on write: ' + err.message
         }
     })
-})
+}
 
 const connect = document.getElementById('connect')
 connect.addEventListener('click', () => {
