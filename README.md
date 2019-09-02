@@ -9,7 +9,7 @@ Works with barcode scanners and USB Keyboards.
 ## Installation
 Download the latest manager application from [releases.](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases)
 
-## Install new Firmware
+## Install Firmware
 1. Plug in the Scanner Pro to a USB port on a computer.
 
 2. Run Scanner Pro Manager
@@ -22,7 +22,7 @@ Download the latest manager application from [releases.](https://github.com/osch
 
 4. Click "Run"
 
-## Execute commands
+## Execute Command
 Interaction with the device is done through serial commands.
 
 1. Plug in the Scanner Pro to a USB port on a computer.
@@ -34,7 +34,7 @@ Interaction with the device is done through serial commands.
 4. Click "Connect" and ensure that the device connects.
 
 5. Plug a scanner into the Scanner Pro and scan the following barcode to change the device into program mode.
-[program](assets/program.png)
+![program](assets/program.png)
 
 6. Wait for the following output
 ```
