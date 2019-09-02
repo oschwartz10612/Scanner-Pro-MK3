@@ -73,7 +73,7 @@ void cmd_get_eeprom(SerialCommands* sender) {
 
   } else if (strcmp(option, "installed_scripts") == 0) {
     sender->GetSerial()->println("Scripts currently installed:");
-    for (unsigned int i = 0; i < sizeof(installedScripts); i++) {
+    for (int i = 0; i < sizeof(installedScripts); i++) {
       sender->GetSerial()->println(installedScripts[i]);
     }
 
@@ -105,7 +105,7 @@ void onFinished() {
       serial_commands_.ReadSerial();
     }
   }
-  
+
   else {
 
     if (SCRIPT == "pxi") {
