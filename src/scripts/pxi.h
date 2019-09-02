@@ -1,7 +1,7 @@
 #include <includes.h>
 
 //Snippit for barcodes with student ids in PXI
-bool script(String msg) {
+bool pxi(String msg) {
     int delayTime = 50;
     if (msg != "") {
         //Check if it is a barcode by looking at the first two numbers
@@ -21,7 +21,7 @@ bool script(String msg) {
             delay(delayTime);
             Keyboard.write(9); //TAB
             delay(delayTime);
-            Keyboard.print(globalSchoolCode);
+            Keyboard.print(SCHOOL_CODE);
             delay(delayTime);
             Keyboard.print(msg);
             delay(delayTime);

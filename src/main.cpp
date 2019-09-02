@@ -8,8 +8,14 @@ SerialCommands serial_commands_(&Serial, serial_command_buffer_, sizeof(serial_c
 String msg;
 char flag_esc = 0;
 int inByte;
+#define SCRIPT read_String(10)
+#define SCHOOL_CODE read_String(0)
 
-#include <script.h> //User Scripts
+int installedScriptsPos = 0;
+String installedScripts[] = {"pxi", "distribution"};
+
+#include <scripts/pxi.h> //User Scripts
+#include <scripts/distribution.h> //User Scripts
 
 void cmd_unrecognized(SerialCommands* sender, const char* cmd) {
 	sender->GetSerial()->print("Unrecognized command [");
@@ -23,6 +29,7 @@ void cmd_set_eeprom(SerialCommands* sender) {
   if (option == NULL) {
     sender->GetSerial()->println("ERROR: NO OPTION");
     return;
+
   } else if (strcmp(option, "school_code") == 0) {
     char* schoolCode = sender->Next();
     sender->GetSerial()->print("Saving \"");
@@ -32,6 +39,17 @@ void cmd_set_eeprom(SerialCommands* sender) {
     String data = schoolCode;
 
     writeString(0, data);
+
+    } else if (strcmp(option, "script") == 0) {
+    char* script = sender->Next();
+    sender->GetSerial()->print("Setting script as \"");
+    sender->GetSerial()->print(script);
+    sender->GetSerial()->println("\"");
+
+    String data = script;
+
+    writeString(10, data);
+
   } else {
     sender->GetSerial()->println("ERROR: OPTION NOT RECOGNIZED");
   }
@@ -43,9 +61,22 @@ void cmd_get_eeprom(SerialCommands* sender) {
   if (option == NULL) {
     sender->GetSerial()->println("ERROR: NO OPTION");
     return;
+
   } else if (strcmp(option, "school_code") == 0) {
     String schoolCode = read_String(0);
     sender->GetSerial()->print(schoolCode);
+
+  } else if (strcmp(option, "script") == 0) {
+    String script = read_String(10);
+    sender->GetSerial()->println("The currently selected script is:");
+    sender->GetSerial()->print(script);
+
+  } else if (strcmp(option, "installed_scripts") == 0) {
+    sender->GetSerial()->println("Scripts currently installed:");
+    for (unsigned int i = 0; i < sizeof(installedScripts); i++) {
+      sender->GetSerial()->println(installedScripts[i]);
+    }
+
   } else {
     sender->GetSerial()->println("ERROR: OPTION NOT RECOGNIZED");
   }
@@ -74,12 +105,25 @@ void onFinished() {
       serial_commands_.ReadSerial();
     }
   }
+  
   else {
-    if (script(msg)) {
-      msg = "";
-    } else {
-      Keyboard.print("Error!");
+
+    if (SCRIPT == "pxi") {
+      if (pxi(msg)) {
+        msg = "";
+      } else {
+        Keyboard.print("Error!");
+      }
     }
+
+    if (SCRIPT == "distribution") {
+      if (distribution(msg)) {
+        msg = "";
+      } else {
+        Keyboard.print("Error!");
+      }
+    }
+
   }
 }
 

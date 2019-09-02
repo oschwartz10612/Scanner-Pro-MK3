@@ -1,7 +1,8 @@
 #include <includes.h>
 
+
 //Just scan barcode and finish with "FCPSON" in PXI
-bool script(String msg) {
+bool distribution(String msg) {
 
 
   int delayTime = 50;
