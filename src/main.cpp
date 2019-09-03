@@ -5,6 +5,8 @@
 char serial_command_buffer_[32];
 SerialCommands serial_commands_(&Serial, serial_command_buffer_, sizeof(serial_command_buffer_), "<>", " ");
 
+template< typename T, size_t N > size_t ArraySize (T (&) [N]){ return N; }
+
 String msg;
 char flag_esc = 0;
 int inByte;
@@ -12,9 +14,10 @@ int inByte;
 #define SCHOOL_CODE read_String(0)
 
 int installedScriptsPos = 0;
-String installedScripts[] = {"pxi", "distribution"};
+String installedScripts[] = {"pxi", "pxi_FCPSON", "distribution"};
 
 #include <scripts/pxi.h> //User Scripts
+#include <scripts/pxi_FCPSON.h> //User Scripts
 #include <scripts/distribution.h> //User Scripts
 
 void cmd_unrecognized(SerialCommands* sender, const char* cmd) {
@@ -42,13 +45,27 @@ void cmd_set_eeprom(SerialCommands* sender) {
 
     } else if (strcmp(option, "script") == 0) {
     char* script = sender->Next();
-    sender->GetSerial()->print("Setting script as \"");
-    sender->GetSerial()->print(script);
-    sender->GetSerial()->println("\"");
+    String stringScript = script;
 
-    String data = script;
+    bool isInstalled = false;
+    for (int i = 0; i < ArraySize(installedScripts); i++) {
+      if (stringScript == installedScripts[i]) {
+        isInstalled = true;
+        break;
+      }
+    }
 
-    writeString(10, data);
+    if (isInstalled == true) {
+      sender->GetSerial()->print("Setting script as \"");
+      sender->GetSerial()->print(script);
+      sender->GetSerial()->println("\"");
+
+      String data = script;
+
+      writeString(10, data);
+    } else {
+      sender->GetSerial()->print("Script does not exist!");
+    }
 
   } else {
     sender->GetSerial()->println("ERROR: OPTION NOT RECOGNIZED");
@@ -72,9 +89,11 @@ void cmd_get_eeprom(SerialCommands* sender) {
     sender->GetSerial()->print(script);
 
   } else if (strcmp(option, "installed_scripts") == 0) {
-    sender->GetSerial()->println("Scripts currently installed:");
-    for (int i = 0; i < sizeof(installedScripts); i++) {
-      sender->GetSerial()->println(installedScripts[i]);
+    sender->GetSerial()->print("Scripts currently installed:");
+    for (int i = 0; i < ArraySize(installedScripts); i++) {
+      sender->GetSerial()->print("\"");
+      sender->GetSerial()->print(installedScripts[i]);
+      sender->GetSerial()->print("\" ");
     }
 
   } else {
@@ -110,6 +129,14 @@ void onFinished() {
 
     if (SCRIPT == "pxi") {
       if (pxi(msg)) {
+        msg = "";
+      } else {
+        Keyboard.print("Error!");
+      }
+    }
+
+    if (SCRIPT == "pxi_FCPSON") {
+      if (pxi_FCPSON(msg)) {
         msg = "";
       } else {
         Keyboard.print("Error!");

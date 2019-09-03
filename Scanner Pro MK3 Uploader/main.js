@@ -75,8 +75,8 @@ ipc.on('run', function (event, data) {
   serialport.list(function (err, ports) {
     ports.forEach(function(port) {
       if (port.comName == comPort) {
-        win.webContents.send('avrdude', 'productId: ' + port.serialNumber);
-        resetPort(port.serialNumber);
+        win.webContents.send('avrdude', 'Device: ' + port.manufacturer);
+        resetPort(port.manufacturer);
       }
     });
   });
@@ -98,8 +98,8 @@ function resetPort(ID) {
 
     setTimeout(() => {
       serialport.list(function (err, ports) {
-        ports.forEach(function(port) {          
-          if (port.serialNumber == ID) {
+        ports.forEach(function(port) {
+          if (port.manufacturer == ID) {
             win.webContents.send('avrdude', 'New port is: ' + port.comName);
 
             win.webContents.send('avrdude', 'Running Avrdude...');

@@ -1,7 +1,7 @@
 #include <includes.h>
 
 //Just scan barcode and finish with "FCPSON" in PXI
-bool script(String msg) {
+bool pxi_FCPSON(String msg) {
     int delayTime = 50;
     if (msg != "") {
         Keyboard.write(9); //TAB
