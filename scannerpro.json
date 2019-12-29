@@ -1,10 +1,10 @@
 {
     "packages": [
       {
-        "name": "Scanner Pro MK3",
+        "name": "Scanner Pro",
         "maintainer": "Owen Schwartz",
         "websiteURL": "https://github.com/oschwartz10612/Scanner-Pro-MK3",
-        "email": "oscnwartz10612@gmail.com",
+        "email": "oschwartz10612@gmail.com",
         "help": {
           "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
         },
@@ -12,17 +12,17 @@
           {
             "name": "Scanner Pro MK3",
             "architecture": "avr",
-            "version": "1.1.0",
-            "category": "USB",
+            "version": "1.0.0",
+            "category": "Contributed",
             "help": {
-              "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
+              "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3d"
             },
             "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/board/scanner-pro.zip",
-        "archiveFileName": "scanner-pro.zip",
-        "checksum": "SHA-256:648b195e378ba7533c48d9028e09d9c5175c1e1aa74ecc57eb21d288b3c24624",
-        "size": "5850631",
+            "archiveFileName": "myboard-1.0.0.zip",
+            "checksum": "SHA-256:648b195e378ba7533c48d9028e09d9c5175c1e1aa74ecc57eb21d288b3c24624",
+            "size": "5850631",
             "boards": [
-            {"name" : "Scanner Pro MK3"}
+              {"name": "Scanner Pro MK3"}
             ],
             "toolsDependencies": [
               {
@@ -38,8 +38,7 @@
             ]
           }
         ],
-        "tools": [
-        ]
+        "tools":[]
       }
     ]
   }
