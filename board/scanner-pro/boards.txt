@@ -1,0 +1,32 @@
+ScannerPro.name=Scanner Pro MK3
+ScannerPro.vid.0=0x1B4F
+ScannerPro.pid.0=0x9207
+ScannerPro.vid.1=0x1B4F
+ScannerPro.pid.1=0x9208
+
+ScannerPro.upload.tool=avrdude
+ScannerPro.upload.protocol=avr109
+ScannerPro.upload.maximum_size=28672
+ScannerPro.upload.maximum_data_size=2560
+ScannerPro.upload.speed=57600
+ScannerPro.upload.disable_flushing=true
+ScannerPro.upload.use_1200bps_touch=true
+ScannerPro.upload.wait_for_upload_port=true
+
+ScannerPro.bootloader.tool=avrdude
+ScannerPro.bootloader.low_fuses=0xff
+ScannerPro.bootloader.high_fuses=0xd8
+ScannerPro.bootloader.extended_fuses=0xce
+ScannerPro.bootloader.file=caterina-ScannerPro/Caterina-ScannerPro.hex
+ScannerPro.bootloader.unlock_bits=0x3F
+ScannerPro.bootloader.lock_bits=0x2F
+
+ScannerPro.build.mcu=atmega32u4
+ScannerPro.build.f_cpu=8000000L
+ScannerPro.build.vid=0x1B4F
+ScannerPro.build.pid=0x9208
+ScannerPro.build.usb_product="LilyPad USB"
+ScannerPro.build.board=AVR_LILYPAD_USB
+ScannerPro.build.core=arduino
+ScannerPro.build.variant=leonardo
+ScannerPro.build.extra_flags={build.usb_flags}
