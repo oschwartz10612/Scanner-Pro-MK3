@@ -3,3 +3,4 @@ PCB/CAMOutputs
 Scanner Pro MK3 Uploader/node_modules
 Scanner Pro MK3 Uploader/release-builds
 .vscode
+.DS_Store
