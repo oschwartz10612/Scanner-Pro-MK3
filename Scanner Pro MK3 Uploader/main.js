@@ -2,6 +2,7 @@ const { app, BrowserWindow, dialog } = require('electron')
 const ipc = require('electron').ipcMain
 const os = require('os');
 var spawn = require('child_process').spawn
+const fixPath = require('fix-path');
 
 let win
 let file
@@ -119,7 +120,10 @@ function avrdude(port, file) {
   if (process.platform === "win32") {
     avrdude = spawn('./avrdude/avrdude.exe', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
   } else {
-    avrdude = spawn('./avrdude/avrdude_bin', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
+    fixPath();
+    var exe = process.env.PATH + '/avrdude/avrdude_bin';
+    var conf = process.env.PATH + '/avrdude/avrdude.conf';
+    avrdude = spawn(exe, ['-p', 'atmega32u4', '-C', conf, '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
   }
   avrdude.stdout.on('data', function (data) {
     win.webContents.send('avrdude', data.toString());
