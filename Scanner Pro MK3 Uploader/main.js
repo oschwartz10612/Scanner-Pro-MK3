@@ -119,7 +119,7 @@ function avrdude(port, file) {
   if (process.platform === "win32") {
     avrdude = spawn('./avrdude/avrdude.exe', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
   } else {
-    avrdude = spawn('avrdude', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
+    avrdude = spawn('./avrdude/avrdude_bin', ['-p', 'atmega32u4', '-C', './avrdude/avrdude.conf', '-c', 'avr109', '-b', '57600', '-D', '-P', port, '-U', 'flash:w:' + file + ':i']);
   }
   avrdude.stdout.on('data', function (data) {
     win.webContents.send('avrdude', data.toString());
