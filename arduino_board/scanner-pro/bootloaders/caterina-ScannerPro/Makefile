@@ -1,6 +1,6 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
-# WinAVR Makefile Template written by Eric B. Weddington, Jörg Wunsch, et al.
+# WinAVR Makefile Template written by Eric B. Weddington, Jï¿½rg Wunsch, et al.
 #  >> Modified for use with the LUFA project. <<
 #
 # Released to the Public Domain
@@ -49,12 +49,14 @@
 # USB vendor ID (VID)
 # official Arduino LLC VID = 0x2341
 # SparkFun VID = 0x1B4F
-VID = 0x1B4F
+#Scanner Pro VID = 0x1B7F
+VID = 0x1B7F
 
 # USB product ID (PID)
 # official Leonardo PID = 0x0036
 # SparkFun LilyPadUSB PID = 0x9207
-PID = 0x9207
+#Scanner Pro PID = 0x9234
+PID = 0x9234
 
 # MCU name
 MCU = atmega32u4
@@ -362,7 +364,7 @@ LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
 # Type: avrdude -c ?
 # to get a full listing.
 #
-AVRDUDE_PROGRAMMER = avrispmkII
+AVRDUDE_PROGRAMMER = usbasp
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
 AVRDUDE_PORT = usb
