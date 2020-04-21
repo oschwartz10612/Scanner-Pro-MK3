@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/oschwartz10612/Scanner-Pro-MK3/master/arduino_board/package_scannerpro_index.json
