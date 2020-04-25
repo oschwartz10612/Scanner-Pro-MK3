@@ -61,10 +61,18 @@ void yield(void);
 #define FALLING 2
 #define RISING 3
 
-#if defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
-#define DEFAULT 0
-#define EXTERNAL 1
-#define INTERNAL 2
+#if defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+  #define DEFAULT 0
+  #define EXTERNAL 1
+  #define INTERNAL1V1 2
+  #define INTERNAL INTERNAL1V1
+#elif defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
+  #define DEFAULT 0
+  #define EXTERNAL 4
+  #define INTERNAL1V1 8
+  #define INTERNAL INTERNAL1V1
+  #define INTERNAL2V56 9
+  #define INTERNAL2V56_EXTCAP 13
 #else  
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
 #define INTERNAL1V1 2
@@ -103,7 +111,8 @@ void yield(void);
 #define bitRead(value, bit) (((value) >> (bit)) & 0x01)
 #define bitSet(value, bit) ((value) |= (1UL << (bit)))
 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
-#define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
+#define bitToggle(value, bit) ((value) ^= (1UL << (bit)))
+#define bitWrite(value, bit, bitvalue) ((bitvalue) ? bitSet(value, bit) : bitClear(value, bit))
 
 // avr-libc defines _NOP() since 1.6.2
 #ifndef _NOP
@@ -122,24 +131,25 @@ void initVariant(void);
 
 int atexit(void (*func)()) __attribute__((weak));
 
-void pinMode(uint8_t, uint8_t);
-void digitalWrite(uint8_t, uint8_t);
-int digitalRead(uint8_t);
-int analogRead(uint8_t);
+void pinMode(uint8_t pin, uint8_t mode);
+void digitalWrite(uint8_t pin, uint8_t val);
+int digitalRead(uint8_t pin);
+int analogRead(uint8_t pin);
 void analogReference(uint8_t mode);
-void analogWrite(uint8_t, int);
+void analogWrite(uint8_t pin, int val);
 
 unsigned long millis(void);
 unsigned long micros(void);
-void delay(unsigned long);
+void delay(unsigned long ms);
 void delayMicroseconds(unsigned int us);
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
+unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
 
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
 
-void attachInterrupt(uint8_t, void (*)(void), int mode);
-void detachInterrupt(uint8_t);
+void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode);
+void detachInterrupt(uint8_t interruptNum);
 
 void setup(void);
 void loop(void);
@@ -232,6 +242,7 @@ uint16_t makeWord(byte h, byte l);
 #define word(...) makeWord(__VA_ARGS__)
 
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout = 1000000L);
+unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout = 1000000L);
 
 void tone(uint8_t _pin, unsigned int frequency, unsigned long duration = 0);
 void noTone(uint8_t _pin);
@@ -239,7 +250,7 @@ void noTone(uint8_t _pin);
 // WMath prototypes
 long random(long);
 long random(long, long);
-void randomSeed(unsigned int);
+void randomSeed(unsigned long);
 long map(long, long, long, long, long);
 
 #endif

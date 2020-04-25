@@ -5,7 +5,7 @@
 */
 
 #include <Arduino.h>
-#include <./keyboard/Keyboard.h>
+#include <Keyboard.h>
 #include "Scanner.h"
 
 Scanner::Scanner()
