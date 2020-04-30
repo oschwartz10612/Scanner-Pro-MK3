@@ -19,8 +19,8 @@
             },
             "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/arduino_board/scanner-pro.zip",
             "archiveFileName": "scanner-pro.zip",
-            "checksum": "SHA-256:c468d5dd48094d96defd0d995b4cb4b8391cdf25a4adfef9c00aa6b67b0378c4",
-            "size": "4557135",
+            "checksum": "SHA-256:e1eeb1cb523a7c7a996c536b65b265effbe224ba309b42ef6678ea0a12d473c0",
+            "size": "4549053",
             "boards": [
               {"name": "Scanner Pro MK3"}
             ],
