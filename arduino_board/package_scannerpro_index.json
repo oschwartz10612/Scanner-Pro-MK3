@@ -1,7 +1,7 @@
 {
     "packages": [
       {
-        "name": "Scanner Pro",
+        "name": "ScannerPro",
         "maintainer": "Owen Schwartz",
         "websiteURL": "https://github.com/oschwartz10612/Scanner-Pro-MK3",
         "email": "oschwartz10612@gmail.com",
@@ -19,19 +19,19 @@
             },
             "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/arduino_board/scanner-pro.zip",
             "archiveFileName": "scanner-pro.zip",
-            "checksum": "SHA-256:e1eeb1cb523a7c7a996c536b65b265effbe224ba309b42ef6678ea0a12d473c0",
-            "size": "4549053",
+            "checksum": "SHA-256:1086dc6336b3281265b6f8bb4ecab5b1f56437a20e9994c881443d7e6823a813",
+            "size": "4702982",
             "boards": [
               {"name": "Scanner Pro MK3"}
             ],
             "toolsDependencies": [
               {
-                "packager": "arduino",
+                "packager": "ScannerPro",
                 "name": "avr-gcc",
                 "version": "4.8.1-arduino5"
               },
               {
-                "packager": "arduino",
+                "packager": "ScannerPro",
                 "name": "avrdude",
                 "version": "6.0.1-arduino5"
               }

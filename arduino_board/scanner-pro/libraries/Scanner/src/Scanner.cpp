@@ -4,8 +4,8 @@
   Released into the public domain.
 */
 
-#include <Arduino.h>
-#include <Keyboard.h>
+#include "Arduino.h"
+#include "./Keyboard.h"
 #include "Scanner.h"
 
 Scanner::Scanner()
