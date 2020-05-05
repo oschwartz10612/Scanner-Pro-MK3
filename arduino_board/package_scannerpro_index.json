@@ -1,73 +1,45 @@
+
 {
-    "packages": [
-      {
-        "name": "ScannerPro",
-        "maintainer": "Owen Schwartz",
-        "websiteURL": "https://github.com/oschwartz10612/Scanner-Pro-MK3",
-        "email": "oschwartz10612@gmail.com",
-        "help": {
-          "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
-        },
-        "platforms": [
-          {
-            "name": "Scanner Pro MK3",
-            "architecture": "avr",
-            "version": "1.0.0",
-            "category": "Contributed",
-            "help": {
-              "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
+  "packages": [
+    {
+      "name": "ScannerPro",
+      "maintainer": "Owen Schwartz",
+      "websiteURL": "https://github.com/oschwartz10612/Scanner-Pro-MK3",
+      "email": "oschwartz10612@gmail.com",
+      "help": {
+        "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
+      },
+      "platforms": [
+        {
+          "name": "Scanner Pro MK3",
+          "architecture": "avr",
+          "version": "1.0.0",
+          "category": "Contributed",
+          "help": {
+            "online": "https://github.com/oschwartz10612/Scanner-Pro-MK3"
+          },
+          "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/arduino_board/scanner-pro.zip",
+          "archiveFileName": "scanner-pro.zip",
+          "checksum": "SHA-256:1086dc6336b3281265b6f8bb4ecab5b1f56437a20e9994c881443d7e6823a813",
+          "size": "4702982",
+          "boards": [
+            {"name": "Scanner Pro MK3"}
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "4.8.1-arduino5"
             },
-            "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/arduino_board/scanner-pro.zip",
-            "archiveFileName": "scanner-pro.zip",
-            "checksum": "SHA-256:1086dc6336b3281265b6f8bb4ecab5b1f56437a20e9994c881443d7e6823a813",
-            "size": "4702982",
-            "boards": [
-              {"name": "Scanner Pro MK3"}
-            ],
-            "toolsDependencies": [
-              {
-                "name": "avr-gcc",
-                "version": "4.8.1-arduino5",
-                "systems": [
-                  {
-                    "host": "i386-apple-darwin11",
-                    "url": "http://downloads.arduino.cc/tools/avr-gcc-4.8.1-arduino5-i386-apple-darwin11.tar.bz2",
-                    "archiveFileName": "avr-gcc-4.8.1-arduino5-i386-apple-darwin11.tar.bz2",
-                    "size": "24437400",
-                    "checksum": "SHA-256:111b3ef00d737d069eb237a8933406cbb928e4698689e24663cffef07688a901"
-                  },
-                  {
-                    "host": "x86_64-linux-gnu",
-                    "url": "http://downloads.arduino.cc/tools/avr-gcc-4.8.1-arduino5-x86_64-pc-linux-gnu.tar.bz2",
-                    "archiveFileName": "avr-gcc-4.8.1-arduino5-x86_64-pc-linux-gnu.tar.bz2",
-                    "size": "27093036",
-                    "checksum": "SHA-256:9054fcc174397a419ba56c4ce1bfcbcad275a6a080cc144905acc9b0351ee9cc"
-                  },
-                  {
-                    "host": "i686-linux-gnu",
-                    "url": "http://downloads.arduino.cc/tools/avr-gcc-4.8.1-arduino5-i686-pc-linux-gnu.tar.bz2",
-                    "archiveFileName": "avr-gcc-4.8.1-arduino5-i686-pc-linux-gnu.tar.bz2",
-                    "size": "25882375",
-                    "checksum": "SHA-256:7648b7f549b37191da0b0be53bae791b652f82ac3cb4e7877f85075aaf32141f"
-                  },
-                  {
-                    "host": "i686-mingw32",
-                    "url": "https://github.com/oschwartz10612/Scanner-Pro-MK3/raw/master/arduino_board/4.8.1-arduino5.zip",
-                    "archiveFileName": "4.8.1-arduino5.zip",
-                    "size": "83447986",
-                    "checksum": "SHA-256:ce21986d62aa57fd0457eb8710ea9399252d114dd53071addef6df8d8fd36baf"
-                  }
-                ]
-              },
-              {
-                "packager": "arduino",
-                "name": "avrdude",
-                "version": "6.0.1-arduino5"
-              }
-            ]
-          }
-        ],
-        "tools":[]
-      }
-    ]
-  }
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "6.0.1-arduino5"
+            }
+          ]
+        }
+      ],
+      "tools":[]
+    }
+  ]
+}
