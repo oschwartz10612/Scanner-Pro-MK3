@@ -2,7 +2,7 @@
 # Scanner Pro MK3
 A simple Arduino based USB device that interfaces with common USB barcode scanners or other text based HID devices (like keyboards) and provides scripting and payload based delivery opportunities through HID (keyboard input) text to the host.
 
-![](docs/board_v1.png)
+![](/docs/board_v1.png)
 
 ## Scanner Pro Manager
 A desktop application to install precompiled firmware for Scanner Pro boards as well as interacting over UART. Download from [releases](https://github.com/oschwartz10612/Scanner-Pro-MK3/releases). 
