@@ -6,6 +6,7 @@ A simple Arduino based USB device that interfaces with common USB barcode scanne
 
 ### How does it work?
 The Scanner Pro acts as a USB host device for barcode scanners and receives the barcode data as a string. This string can be manipulated or used for logic in user generated scripts before being spit out back to the computer. The ATMEGA32U4 on board acts like a USB client device (i.e. a USB keyboard) and sends the output as keystrokes so it's just like using a keyboard.
+If you would like to order one, please complete [this form](https://forms.gle/WCn4ogD4mPgRPNM47).
 
 ### Example Use Cases
 - Populate all PXI imaging screen dialog boxes upon the scan of the computer's barcode ID.
@@ -34,6 +35,6 @@ Custom sketches can be written for the board in using the Arduino Board framewor
 If you would like custom developed firmware for your application, please open an issue or contact me.
 
 ## PCB and Parts
-PCB files and a BOM are included in the repo. If you would like one you can reach out.
+PCB files and a BOM are included in the repo. If you would like one, please complete [this form](https://forms.gle/WCn4ogD4mPgRPNM47).
 
 
