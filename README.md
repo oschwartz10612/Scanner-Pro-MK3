@@ -35,6 +35,6 @@ Custom sketches can be written for the board in using the Arduino Board framewor
 If you would like custom developed firmware for your application, please open an issue or contact me.
 
 ## PCB and Parts
-PCB files and a BOM are included in the repo. If you would like one, please complete [this form](https://forms.gle/WCn4ogD4mPgRPNM47).
+PCB files and a BOM are included in the repo. If you would like one, please [place an order](https://www.ebay.com/itm/194171078355) on eBay or message me there with questions about the product.
 
 
