@@ -2,7 +2,8 @@
 # Scanner Pro MK3
 A simple Arduino based USB device that interfaces with common USB barcode scanners or other text based HID devices (like keyboards) and provides scripting and payload based delivery opportunities through HID (keyboard input) text to the host.
 
-![](/docs/board_v1.jpg)
+![](/docs/board_v2.jpg)
+![](/docs/board_v2_keyboard.jpg)
 
 ### How does it work?
 The Scanner Pro acts as a USB host device for barcode scanners and receives the barcode data as a string. This string can be manipulated or used for logic in user generated scripts before being spit out back to the computer. The ATMEGA32U4 on board acts like a USB client device (i.e. a USB keyboard) and sends the output as keystrokes so it's just like using a keyboard.
