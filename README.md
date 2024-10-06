@@ -1,6 +1,6 @@
 
 # Scanner Pro MK3
-A simple Arduino based USB device that interfaces with common USB barcode scanners or other text based HID devices (like keyboards) and provides scripting and payload based delivery opportunities through HID (keyboard input) text to the host. Due to a recent interested individual, there are now boards [live on eBay](https://www.ebay.com/itm/194171078355) for purchace!
+A simple Arduino based USB device that interfaces with common USB barcode scanners or other text based HID devices (like keyboards) and provides scripting and payload based delivery opportunities through HID (keyboard input) text to the host.
 
 ![](/docs/board_v2.png)
 ![](/docs/board_v2_keyboard.png)
